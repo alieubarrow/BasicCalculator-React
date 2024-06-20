@@ -1,0 +1,72 @@
+body {
+  background-color:grey;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.container {
+  padding: 20px;
+  border-style: solid;
+  border-radius: 25px;
+  background-color: black;
+  width: 270px;
+  height:410px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} 
+
+.symbol {
+  background-color: lightgrey;
+  color: black;
+  border: none;
+  padding: 20px;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 60px; 
+  height: 60px;
+}
+
+.sign {
+  background-color: yellow;
+  color: black;
+  border: none;
+  padding: 20px;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 60px; 
+  height: 60px;
+}
+
+.numbers {
+  background-attachment: grey;
+  color: black;
+  border: none;
+  padding: 20px;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 60px; 
+  height: 60px;
+}
+
+.output {
+  width: 250px;
+  height: 40px;
+  padding: 10px;
+  font-size: 20px;
+  border: 2px solid grey;
+  background-color: lightgray;
+}
+
+
