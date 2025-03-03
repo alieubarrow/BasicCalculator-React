@@ -2,65 +2,54 @@ import { evaluate } from "mathjs";
 import { useState } from "react";
 
 export default function App() {
-
   const [display, setDisplay] = useState("");
   const [result, setResult] = useState(null);
 
-  const handlelClick = (digit) => {
-    setDisplay(display + digit);
-  }
+  const handleClick = (digit) => {
+    setDisplay((prevDisplay) => prevDisplay + digit);
+  };
  
   const handleClear = () => {
-    setDisplay('');
+    setDisplay("");
     setResult(null);
-  }
+  };
 
   const handleEqual = () => {
+    if (!display) return;
     try {
-      const evalResult = evaluate(display); 
-      setResult(evalResult);
+      setResult(evaluate(display));
     } catch (error) {
-      setResult('Error');
+      setResult("Error");
     }
-  }
+  };
 
   return (
     <>
-    <div class="container">
-    <input type="text" value ={result !== null ? result : display} class="output"/>
-    <table>
-      <tr>
-        <td><button class="symbol" onClick={handleClear}>AC</button></td>
-        <td><button class="symbol" onClick={() => {handlelClick("(")}}>(</button></td>
-        <td><button class="symbol" onClick={() => {handlelClick(")")}}>)</button></td>
-        <td><button class="sign" onClick={() => {handlelClick("/")}}>÷</button></td>
-      </tr>
-      <tr>
-        <td><button class="numbers" onClick={() => {handlelClick("7")}}>7</button></td>
-        <td><button class="numbers" onClick={() => {handlelClick("8")}}>8</button></td>
-        <td><button class="numbers" onClick={() => {handlelClick("9")}}>9</button></td>
-        <td><button class="sign" onClick={() => {handlelClick(" * ")}}>X</button></td>
-      </tr>
-      <tr>
-        <td><button class="numbers" onClick={() => {handlelClick("4")}}>4</button></td>
-        <td><button class="numbers" onClick={() => {handlelClick("5")}}>5</button></td>
-        <td><button class="numbers" onClick={() => {handlelClick("6")}}>6</button></td>
-        <td><button class="sign" onClick={() => {handlelClick(" - ")}}>-</button></td>
-      </tr>
-      <tr>
-        <td><button class="numbers" onClick={() => {handlelClick("1")}}>1</button></td>
-        <td><button class="numbers" onClick={() => {handlelClick("2")}}>2</button></td>
-        <td><button class="numbers" onClick={() => {handlelClick("3")}}>3</button></td>
-        <td><button class="sign" onClick={() => {handlelClick(" + ")}}>+</button></td>
-      </tr>
-      <tr>
-        <td><button class="numbers" onClick={() => {handlelClick("0")}}>0</button></td>
-        <td><button class="numbers" onClick={() => {handlelClick("^")}}>^</button></td>
-        <td><button class="numbers" onClick={() => {handlelClick(".")}}>.</button></td>
-        <td><button class="sign" onClick={handleEqual}>=</button></td>
-      </tr>
-    </table>
-  </div>
+      <div className="container">
+        <input type="text" value={result !== null ? result : display} className="output" readOnly/>
+        <div className="buttons-container">
+          <button className="symbol" onClick={handleClear}>AC</button>
+          <button className="symbol" onClick={() => handleClick("(")}>(</button>
+          <button className="symbol" onClick={() => handleClick(")")}>)</button>
+          <button className="sign" onClick={() => handleClick("/")}>÷</button>
+          <button className="numbers" onClick={() => handleClick("7")}>7</button>
+          <button className="numbers" onClick={() => handleClick("8")}>8</button>
+          <button className="numbers" onClick={() => handleClick("9")}>9</button>
+          <button className="sign" onClick={() => handleClick("*")}>×</button>
+          <button className="numbers" onClick={() => handleClick("4")}>4</button>
+          <button className="numbers" onClick={() => handleClick("5")}>5</button>
+          <button className="numbers" onClick={() => handleClick("6")}>6</button>
+          <button className="sign" onClick={() => handleClick("-")}>−</button>
+          <button className="numbers" onClick={() => handleClick("1")}>1</button>
+          <button className="numbers" onClick={() => handleClick("2")}>2</button>
+          <button className="numbers" onClick={() => handleClick("3")}>3</button>
+          <button className="sign" onClick={() => handleClick("+")}>+</button>
+          <button className="numbers" onClick={() => handleClick("0")}>0</button>
+          <button className="numbers" onClick={() => handleClick("^")}>^</button>
+          <button className="numbers" onClick={() => handleClick(".")}>.</button>
+          <button className="sign" onClick={handleEqual}>=</button>
+        </div>
+      </div>
     </>
   );
 }

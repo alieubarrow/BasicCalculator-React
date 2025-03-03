@@ -48,7 +48,7 @@ table {
 }
 
 .numbers {
-  background-attachment: grey;
+  background-color: grey;
   color: black;
   border: none;
   padding: 20px;
